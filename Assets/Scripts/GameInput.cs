@@ -9,13 +9,17 @@ public class GameInput : MonoBehaviour
     }
 
     private void OnEnable() {
-        playerInputActions.Player.Jump.Enable();
-        playerInputActions.Player.Move.Enable();
+        if (playerInputActions != null) {
+            playerInputActions.Player.Jump.Enable();
+            playerInputActions.Player.Move.Enable();
+        };
     }
 
     private void OnDisable() {
-        playerInputActions.Player.Jump.Disable();
-        playerInputActions.Player.Move.Disable();
+        if (playerInputActions != null) {
+            playerInputActions.Player.Jump.Disable();
+            playerInputActions.Player.Move.Disable();
+        };
     }
 
     public Vector2 GetMovementVector() {

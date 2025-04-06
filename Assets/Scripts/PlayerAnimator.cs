@@ -10,15 +10,15 @@ public class PlayerAnimator : MonoBehaviour
 
     private Animator animator;
 
-    private void ConditionallyTriggerWalkingAnimation() {
+    private void Awake() {
         animator = GetComponent<Animator>();
+    }
 
+    private void ConditionallyTriggerWalkingAnimation() {
         animator.SetBool(PLAYER_IS_WALKING, player.IsWalking());
     }
 
     private void ConditionallyTriggerJumpingAnimation() {
-        animator = GetComponent<Animator>();
-
         animator.SetBool(PLAYER_IS_JUMPING, player.IsJumping());
     }
 
