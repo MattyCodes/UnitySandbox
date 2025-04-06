@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
 
     private bool isWalking;
+    private bool isJumping;
 
     private void Update()
     {
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
         isWalking = moveDir != Vector3.zero;
+        isJumping = gameInput.GetJumpingValue();
 
         transform.position += moveDir * movementSpeed * Time.deltaTime;
 
@@ -26,5 +28,9 @@ public class Player : MonoBehaviour
 
     public bool IsWalking() {
         return isWalking;
+    }
+
+    public bool IsJumping() {
+        return isJumping;
     }
 }

@@ -6,11 +6,23 @@ public class GameInput : MonoBehaviour
 
     private void Awake() {
         playerInputActions = new PlayerInputActions();
+    }
 
-        playerInputActions.Player.Enable();
+    private void OnEnable() {
+        playerInputActions.Player.Jump.Enable();
+        playerInputActions.Player.Move.Enable();
+    }
+
+    private void OnDisable() {
+        playerInputActions.Player.Jump.Disable();
+        playerInputActions.Player.Move.Disable();
     }
 
     public Vector2 GetMovementVector() {
         return playerInputActions.Player.Move.ReadValue<Vector2>();
+    }
+
+    public bool GetJumpingValue() {
+        return playerInputActions.Player.Jump.WasPressedThisFrame();
     }
 }
